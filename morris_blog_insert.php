@@ -118,7 +118,11 @@
 <body>
 <header>
 	<h1>Logboek aanvullen</h1>
-	<?php if (isset($error)) {
+	<?php 
+	if (isset($_SESSION['blogname'])) {
+		echo "<p>Hallo $_SESSION[blogname], maak er wat moois van.</p>";
+	}
+	if (isset($error)) {
 		echo "<p>Error: $error</p>";	
 	} ?>
 </header>
