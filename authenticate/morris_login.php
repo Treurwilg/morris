@@ -9,7 +9,7 @@ if (isset($_POST['login'])) {
 	$username = trim($_POST['username']);
 	$password = trim($_POST['pwd']);
 	// location to redirect on success
-	$redirect = 'https://ict4us.nl/authenticate/morris_menu.php';
+	$redirect = 'https://ict4us.nl/morris/morris_blog.php';
 	require_once '/private/morris/includes/authenticate.php';
 }
 ?>
