@@ -2,6 +2,7 @@
 	include '../../private/morris/includes/title.php'; 
 	require_once '../../private/includes/connection.php';
 	require_once '../../private/includes/utility_funcs.php';
+	require_once '/private/morris/includes/morris_session_timeout.php';
 	// create database connection
 	$conn = dbConnect('read', 'pdo');
 	$sql = 'SELECT * FROM morris_blog ORDER BY created DESC';
@@ -18,7 +19,7 @@
     <title>Morris MMS<?php if(isset($title)) { echo "&mdash;{$title}"; } ?></title>
     <link href="https://ict4us.nl/morris/styles/morris.css" rel="stylesheet" type="text/css">
 </head>
-
+	<?php include '/private/morris/includes/morris_logout.php'; ?>
 <body>
 <header>
     <h1>Logboek</h1>

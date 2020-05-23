@@ -1,7 +1,7 @@
 <?php
 // File: morris_session_timeout.php
 // Bedoeling: logout, terug naar morris_login.php
-// included in: morris_menu.php en morris_secretpage.php 
+// included in: morris_blog.php en morris_blog_insert.php 
 // Sessie wordt gekild
 // Status: operationeel voor Morris project
 session_start();
@@ -11,7 +11,7 @@ $timelimit = 15 * 60;
 // get the current time
 $now = time();
 // where to redirect if rejected
-$redirect = 'http://localhost/phpsols-4e/authenticate/login_db.php';
+$redirect = 'https://ict4us.nl/authenticate/morris_login.php';
 // if session variable not set, redirect to login page
 if (!isset($_SESSION['authenticated'])) {
     header("Location: $redirect");

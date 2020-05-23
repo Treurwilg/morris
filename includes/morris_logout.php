@@ -3,7 +3,7 @@
 // Bedoeld: om de gebruiker actief te laten uitloggen 
 //          en terug te keren naar morris_login.php
 // Basis voor: logout functie in project
-// included in: morris_menu.php en morris_secretpage.php 
+// included in: morris_blog.php en morris_blog_insert.php 
 // geen session_start, want andere include bevat die al. sessie wordt gekild
 // Status: operationeel voor Morris project
 // run this script only if the logout button has been clicked

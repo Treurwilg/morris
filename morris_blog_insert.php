@@ -3,6 +3,7 @@
 	use PhpClasses\Image\Thumbnail2;
 	require_once '../../private/includes/connection.php';
 	require_once '../../private/includes/utility_funcs.php';
+	require_once '/private/morris/includes/morris_session_timeout.php';
 	// create database connection
 	$conn = dbConnect('write', 'pdo');
 	if (isset($_POST['insert'])) {
@@ -190,6 +191,7 @@
 				<input type="submit" name="insert" value="Insert New Entry">		
 			</p>
 		</form>
+		<?php include '/private/morris/includes/morris_logout.php'; ?>
 	</main>
 </div>
 <script src="js/toggle_fields.js"></script>
