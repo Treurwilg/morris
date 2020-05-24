@@ -7,4 +7,7 @@ if ($title == 'index') {
 if ($title == 'morris_blog') {
 	$title = 'logboek';
 }
+if ($title == 'morris_blog_insert') {
+	$title = 'aanvullen';
+}
 $title = ucwords($title);

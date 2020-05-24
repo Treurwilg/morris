@@ -16,7 +16,7 @@
 <html>
 <head>
     <meta charset="utf-8">
-    <title>Morris MMS<?php if(isset($title)) { echo "&mdash;{$title}"; } ?></title>
+    <title>Morris<?php if(isset($title)) { echo "&mdash;{$title}"; } ?></title>
     <link href="https://ict4us.nl/morris/styles/morris.css" rel="stylesheet" type="text/css">
 </head>
 <body>

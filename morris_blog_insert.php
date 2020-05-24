@@ -1,9 +1,10 @@
 <?php
 	use PhpClasses\File\Upload;
 	use PhpClasses\Image\Thumbnail2;
-	require_once '../../private/includes/connection.php';
-	require_once '../../private/includes/utility_funcs.php';
+	require_once '/private/includes/connection.php';
+	require_once '/private/includes/utility_funcs.php';
 	require_once '/private/morris/includes/morris_session_timeout.php';
+	include '/private/morris/includes/title.php';
 	// create database connection
 	$conn = dbConnect('write', 'pdo');
 	if (isset($_POST['insert'])) {
@@ -115,11 +116,10 @@
 <head>
 <meta charset="utf-8">
 <title>Aanvullen</title>
-<link href="./styles/admin.css" rel="stylesheet" type="text/css">
+<link href="./styles/morris.css" rel="stylesheet" type="text/css">
 </head>
 <body>
 <header>
-	<h1>Logboek aanvullen</h1>
 	<?php 
 	if (isset($_SESSION['blogname'])) {
 		echo "<p>Hallo $_SESSION[blogname], maak er wat moois van.</p>";
@@ -130,7 +130,7 @@
 </header>
 <div id="wrapper">
 	<?php 
-	    $file = './../../private/morris/includes/menu.php';
+	    $file = '/private/morris/includes/menu.php';
 	    if (file_exists($file) && is_readable($file)) {
 	    	require $file;
 	    } else {
@@ -138,6 +138,7 @@
 	    } 
 	?>
 	<main>
+		<h1>Logboek aanvullen</h1>
 		<form method="post" action="morris_blog_insert.php" enctype="multipart/form-data">
 			<p>
 				<label for="title">Titel:</label>
@@ -161,8 +162,6 @@
 					<?php } ?>
 				</select>		
 			</p>
-			
-			
 			<p>
 				<label for="image_id">Al ge-uploade foto:</label>
 				<select name="image_id" id="image_id">
@@ -199,6 +198,7 @@
 		</form>
 		<?php include '/private/morris/includes/morris_logout.php'; ?>
 	</main>
+	<?php include '/private/morris/includes/footer.php'; ?>
 </div>
 <script src="js/toggle_fields.js"></script>
 </body>
