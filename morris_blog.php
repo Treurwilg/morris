@@ -19,7 +19,6 @@
     <title>Morris MMS<?php if(isset($title)) { echo "&mdash;{$title}"; } ?></title>
     <link href="https://ict4us.nl/morris/styles/morris.css" rel="stylesheet" type="text/css">
 </head>
-	<?php include '/private/morris/includes/morris_logout.php'; ?>
 <body>
 <header>
     <h1>Logboek</h1>
@@ -31,7 +30,7 @@
 			echo "<p>$error</p>";       
        }	else {
        	while ($row = $result->fetch())	{
-       		$articleHeading = $row['created'] . " " . $row['title'];
+       		$articleHeading = $row['created'] . ' ' . $row['title'] . ' ' . ' (' . $row['writer'] . ')';
 				echo "<h2>$articleHeading</h2>";
 				// echo "<h2>{$row['created']}</h2>";
 				$extract = getFirst($row['article'], 2);
@@ -43,6 +42,7 @@
        	}
        }
       ?>
+      <?php include '/private/morris/includes/morris_logout.php'; ?>
     </main>
     <?php include '../../private/morris/includes/footer.php'; ?>
 </div>

@@ -3,6 +3,7 @@
 	$imageDir = './images/images_web/';
 	require_once '../../private/includes/utility_funcs.php';
 	require_once '../../private/includes/connection.php';
+	require_once '/private/morris/includes/morris_session_timeout.php';
 	// connect to the database
 	$conn = dbConnect('read', 'pdo');
 	// check for article_id in query string
@@ -11,7 +12,7 @@
 	} else {
 		$article_id = 0;	
 	}
-	$sql = "SELECT title, article, DATE_FORMAT(created, '%W, %M %D, %Y') AS updated, filename_web, caption
+	$sql = "SELECT title, article, writer, DATE_FORMAT(created, '%W, %M %D, %Y') AS updated, filename_web, caption
 				FROM morris_blog LEFT JOIN morris_images USING (image_id)
 				WHERE morris_blog.article_id = $article_id";
 	$result = $conn->query($sql);
@@ -39,7 +40,8 @@
     <?php require '../../private/morris/includes/menu.php'; ?>
     <main>
         <h2><?php if ($row) {
-				echo safe($row['title']);        
+        		$fullHeading = safe($row['title']) . ' (' . safe($row['writer']) . ')';
+				echo $fullHeading;        
         } else {
 				echo 'No record found';        
         }
@@ -65,6 +67,7 @@
 				// otherwise, send to main page
 				echo 'morris_blog.php';			
 			} ?>">Terug naar het logboek</a></p>
+			<?php include '/private/morris/includes/morris_logout.php'; ?>
     </main>
     <?php include '../../private/morris/includes/footer.php'; ?>
 </div>

@@ -53,7 +53,8 @@
 		// insert blog details only if there hasn't been an image upload error
 		if (!isset($imageError)) {
 			// create SQL
-			$sql = 'INSERT INTO morris_blog (image_id, title, article) VALUES(:image_id, :title, :article)'; 			
+			// $writer = $_SESSION['blogname'];
+			$sql = 'INSERT INTO morris_blog (image_id, title, article, writer) VALUES(:image_id, :title, :article, :writer)'; 			
 			//prepare the statement
 			$stmt = $conn->prepare($sql);
 			// bind the parameters
@@ -66,6 +67,7 @@
 			}
 			$stmt->bindParam(':title', $_POST['title'], PDO::PARAM_STR);
 			$stmt->bindParam(':article', $_POST['article'], PDO::PARAM_STR);
+			$stmt->bindParam(':writer', $_SESSION['blogname'], PDO::PARAM_STR);
 			// execute and get number of affected rows
 			$stmt->execute();
 			$OK = $stmt->rowCount();
