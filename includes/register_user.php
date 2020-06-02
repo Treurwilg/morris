@@ -1,9 +1,9 @@
 <?php
-use PhpSolutions\Authenticate\CheckPassword;
-require_once(__DIR__ . '/../../../www/PhpSolutions/Authenticate/CheckPassword.php');
+use classes\CheckPassword; // PhpClasses\Authenticate
+require_once __DIR__ . '/../classes/CheckPassword.php'; // PhpClasses/Authenticate/
 $usernameMinChars = 6;
 $errors = [];
-
+$success = '';
 if (strlen($username) < $usernameMinChars) {
 	$errors[] = "Gebruikersnaam heeft minstens $usernameMinChars karakters.";
 }
@@ -24,19 +24,18 @@ if (!preg_match('/^[- _\p{L}\d]+$/ui', $username)) {
 	if (!$errors) {
 		// hash password using default algorithm
 		$password = password_hash($password, PASSWORD_DEFAULT);
-		require_once './../../private/includes/connection.php';
+		require_once '/private/includes/connection.php';
 		$conn = dbConnect('write', 'pdo');
 		// prepare SQL statement
-		$sql = 'INSERT INTO morris_users (username, blogname, password, email) VALUES (:username, :blogname, :password, :email)';
+		$sql = 'INSERT INTO morris_users (username, password) VALUES (:username, :password)';
 		$stmt = $conn->prepare($sql);
 		// bind parameters and insert details into the database		
 		$stmt->bindParam(':username', $username, PDO::PARAM_STR);
-		$stmt->bindParam(':blogname', $blogname, PDO::PARAM_STR);
 		$stmt->bindParam(':password', $password, PDO::PARAM_STR);
-		$stmt->bindParam(':email', $email, PDO::PARAM_STR);
 		$stmt->execute();
+		$lastUserId = $conn->lastInsertId();
 		if ($stmt->rowCount() == 1) {
-			$success = htmlentities($username) . ' is geregistreerd. Je kunt nu inloggen.';		
+			$success = htmlentities($username) . ' is geregistreerd. Je kunt nu je logboeknaam opgeven.';		
 		}	elseif ($stmt->errorCode() == 23000) {
 			$errors[] = htmlentities($username) . ' is al in gebruik. Kies een andere naam.';		
 		} else {

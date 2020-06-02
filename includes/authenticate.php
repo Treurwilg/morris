@@ -4,7 +4,7 @@
 // Included in: morris_login.php
 // Verder: geeft sessie naam en tijd; regenereert sessie_id
 // Status: operationeel voor Morris project
-require_once './../../private/includes/connection.php';
+require_once '/private/includes/connection.php';
 $conn = dbConnect('read', 'pdo');
 // get username's hashed password from the database
 $sql = 'SELECT password, blogname FROM morris_users WHERE username = ?';

@@ -1,11 +1,24 @@
 <?php
-if (isset($_POST['register'])) {
-	$username = trim($_POST['username']);
-	$blogname = trim($_POST['blogname']);
-	$email = trim($_POST['email']);
-	$password = trim($_POST['pwd']);
-	$retyped = trim($_POST['conf_pwd']);
-	require '/private/morris/includes/register_user.php';
+session_start();
+$redirect = 'https://ict4us.nl/authenticate/morris_login.php';
+if (!isset($_SESSION['status'])) {
+	header("Location: $redirect");
+	exit;	
+} else {
+	if (isset($_POST['register'])) {
+		$username = trim($_POST['username']);
+		$password = trim($_POST['pwd']);
+		$retyped = trim($_POST['conf_pwd']);
+		require '/private/morris/includes/register_user.php';
+		if($success) {
+			$_SESSION['lastUserId'] = $lastUserId;
+			$_SESSION['status'] = 'go';
+			$_SESSION['success'] = 'Voer logboeknaam in met maximaal 10 karakters';
+			$redirect = 'https://ict4us.nl/authenticate/register_blogname.php';
+			header("Location: $redirect");
+			exit;
+		}
+	}
 }
 ?>
 <!DOCTYPE HTML>
@@ -26,7 +39,7 @@ if (isset($_POST['register'])) {
     </style>
 </head>
 <body>
-<h1>Als gebruiker registreren</h1>
+<h1>Als gebruiker registreren: naam en wachtwoord</h1>
 <?php
 	if (isset($success)) {
 		echo "<p>$success</p>";
@@ -38,18 +51,10 @@ if (isset($_POST['register'])) {
 		echo '</ul>';
 	}
 ?>
-<form action="morris_register.php" method="post">
+<form action="register.php" method="post">
     <p>
         <label for="username">Gebruikersnaam:</label>
         <input type="text" name="username" id="username">Waarmee je na registratie inlogt(>6 karakters).
-    </p>
-    <p>
-        <label for="blogname">Logboeknaam:</label>
-        <input type="text" name="blogname" id="blogname">De naam die anderen zien bij jouw logboekartikelen (<10 karakters).
-    </p>
-    <p>
-			<label for="email">Emailadres:</label>
-			<input type="text" name="email" id="email">Waarmee je mag registreren.  
     </p>
     <p>
         <label for="pwd">Wachtwoord:</label>

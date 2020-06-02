@@ -21,7 +21,7 @@ if (isset($_POST['login'])) {
 </head>
 
 <body>
-<
+<a href="https://ict4us.nl/authenticate/verify_email.php" >REGISTREER</a>
 <?php
 if ($error) {
     echo "<p>$error</p>";
