@@ -13,11 +13,11 @@ if (!isset($_SESSION['status'])) {
 		if($success) {
 			$_SESSION['lastUserId'] = $lastUserId;
 			$_SESSION['status'] = 'go';
-			$_SESSION['success'] = 'Voer logboeknaam in met maximaal 10 karakters';
+			$_SESSION['success'] = $success;
 			$redirect = 'https://ict4us.nl/authenticate/register_blogname.php';
 			header("Location: $redirect");
 			exit;
-		}
+		} 
 	}
 }
 ?>

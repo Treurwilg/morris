@@ -4,12 +4,13 @@ require_once __DIR__ . '/../classes/CheckPassword.php'; // PhpClasses/Authentica
 $usernameMinChars = 2;
 $errors = [];
 $success = '';
+$username = $blogname;
 if (strlen($username) < $usernameMinChars) {
-	$errors[] = "Gebruikersnaam heeft minstens $usernameMinChars karakters.";
+	$errors[] = "Logboeknaam heeft minstens $usernameMinChars karakters.";
 }
 if (!preg_match('/^[- _\p{L}\d]+$/ui', $username)) {
 	$errors[] = 'Alleen alfanumerieke karakters, spaties, streepjes en onderstreepjes 
-						zijn toegestaan in gebruikersnaam.';
+						zijn toegestaan in logboeknaam.';
 }
 	if (!$errors) {
 		require_once '/private/includes/connection.php';

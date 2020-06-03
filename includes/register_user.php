@@ -35,7 +35,7 @@ if (!preg_match('/^[- _\p{L}\d]+$/ui', $username)) {
 		$stmt->execute();
 		$lastUserId = $conn->lastInsertId();
 		if ($stmt->rowCount() == 1) {
-			$success = htmlentities($username) . ' is geregistreerd. Je kunt nu je logboeknaam opgeven.';		
+			$success = htmlentities($username) . ' is geregistreerd. Voer logboeknaam in met maximaal 10 karakters.';		
 		}	elseif ($stmt->errorCode() == 23000) {
 			$errors[] = htmlentities($username) . ' is al in gebruik. Kies een andere naam.';		
 		} else {
