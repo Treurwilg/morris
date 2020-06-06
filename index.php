@@ -19,7 +19,7 @@
 	
 	<body>
 	<header>
-	    <h1>Morris MMS | Startpagina</h1>
+	    <h1>Morris MotorManagementSysteem</h1>
 	</header>
 	<div id="wrapper">
 	    <?php 
@@ -42,9 +42,9 @@
 	        <p>
 	         </p>
 	        <p>Er werd contact gezocht met een gepensioneerd leraar Motorvoertuigtechniek, die nu cursussen op het gebied van Motor Management Systemen geeft. Dat geeft een mooie start voor het project. Bovendien wist de leraar ons aan een adres te helpen waar een oude oude Morris-motor beschikbaar was, en wel bij een lid van de Nederlandsche Morris-vereniging</p>
-	        <p>Begin 2020 begonnen we met een cursus voor 5 man bij betrokken leraar. Ziedaar het materiaal voor de start: eem aantal enthousiaste vrijwilligers van het Motorenmuseum, een even enthousiaste leraar Motor Management Systemen en een motor uit de jaren 1960 (of zoiets).</p>
-	        <p>Om  in het coronatijdperk de voortgang toch in beeld te brengen en de betrokkenheid hoog te houden, leek het goed idee deze website in het leven te roepen. Het belangrijkste onderdeel is het logboek, waarin de betrokken hun ervaringen ideeen en materiaal kunnen weergeven.</p>
-	        <p>Verder is er een fotogalerij en een contactpagina. Via deze laatste kan eenieder ons benaderen met vragen of ideeen.</p>
+	        <p>Begin 2020 begonnen we met een cursus voor 5 man bij betrokken leraar. Ziedaar het materiaal voor de start: een aantal enthousiaste vrijwilligers van het Motorenmuseum, een even enthousiaste leraar Motor Management Systemen en een motor uit de jaren 1960 (of zoiets).</p>
+	        <p>Om  in het coronatijdperk de voortgang toch in beeld te brengen en de betrokkenheid hoog te houden, leek het goed idee deze website in het leven te roepen. Het belangrijkste onderdeel is het logboek, waarin de betrokkenen hun ervaringen, ideeën en materiaal kunnen weergeven. Toegang tot het logboek en de bijbehorende opmaakpagina is vooralsnog voorbehouden aan de leden van de morrisgroep. </p>
+	        <p>Verder zijn er een fotogalerij en een contactpagina. Via deze laatste kan eenieder ons benaderen met vragen of ideeën. Na voldoende voortgang zal een nieuwsbrief worden toegevoegd.</p>
 	    </main>
 	    <?php require './../../private/morris/includes/footer.php'; ?>
 	</div>

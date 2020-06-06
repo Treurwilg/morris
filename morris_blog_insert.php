@@ -193,10 +193,10 @@
 				<input name="caption" type="text" id="caption">		
 			</p>
 			<p>
-				<input type="submit" name="insert" value="Insert New Entry">		
+				<input type="submit" name="insert" value="Vul logboek aan met dit artikel">		
 			</p>
+			<?php include '/private/morris/includes/morris_logout.php'; ?>
 		</form>
-		<?php include '/private/morris/includes/morris_logout.php'; ?>
 	</main>
 	<?php include '/private/morris/includes/footer.php'; ?>
 </div>

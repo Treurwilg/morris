@@ -21,20 +21,21 @@ if (isset($_POST['login'])) {
 </head>
 
 <body>
-<a href="https://ict4us.nl/authenticate/verify_email.php" >REGISTREER</a>
+<p>Nieuw op deze webstek? <a href="https://ict4us.nl/authenticate/verify_email.php" >REGISTREER</a> </p>
+<p>Oud en vertrouwd? Log hier in:</p>
 <?php
 if ($error) {
     echo "<p>$error</p>";
 } elseif (isset($_GET['expired'])) { ?>
-    <p>Your session has expired. Please log in again.</p>
+    <p>Je sessie is verlopen. Log aub weer in.</p>
 <?php } ?>
 <form method="post" action="morris_login.php">
     <p>
-        <label for="username">Username:</label>
+        <label for="username">Gebruikersnaam:</label>
         <input type="text" name="username" id="username">
     </p>
     <p>
-        <label for="pwd">Password:</label>
+        <label for="pwd">Wachtwoord:</label>
         <input type="password" name="pwd" id="pwd">
     </p>
     <p>

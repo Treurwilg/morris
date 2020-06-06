@@ -110,17 +110,17 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         <h2>Neem contact met ons op</h2>
         <?php if (($_POST && $suspect) || ($_POST && isset($errors['mailfail']))) { 
         echo ' ' . $suspect . ' ' . $errors['mailfail'] . ' ' ?>
-        	<p class="warning">Sorry, your mail could not be sent.
-        	Please try later.</p>
+        	<p class="warning">Sorry, je mail kon niet worden verzonden.
+        	Probeer aub later.</p>
         <?php } elseif ($missing || $errors) { ?> 
-        		<p class="warning">Please fix the item(s) indicated.</p>
+        		<p class="warning">Verbeter de aangegeven onderdelen.</p>
         	<?php } ?>
-        <p>Some message.</p>
+        <p>Een bericht aan de Morrisgroep:</p>
         <form method="post" action="contact_us.php">
             <p>
-                <label for="name">Name:
+                <label for="name">Naam:
                 <?php if (in_array('name', $missing)) { ?>
-                	<span class="warning">Voer aub je naam in</span>
+                	<span class="warning">Voer je naam in</span>
                 <?php } ?>	
                 </label>
                 <input name="name" id="name" type="text"
@@ -131,7 +131,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             <p>
                 <label for="email">Email:
 					<?php if (in_array('email', $missing)) { ?>
-                	<span class="warning">Voer aub je emailadres in</span>
+                	<span class="warning">Voer je emailadres in</span>
                 <?php } elseif (isset($errors['email'])) { ?>
                 	<span class="warning">Ongeldig email adres</span>
                 <?php } ?>	                
@@ -142,9 +142,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 	} ?>>
             </p>
             <p>
-                <label for="comments">Comments:
+                <label for="comments">Bericht:
                 <?php if (in_array('comments', $missing)) { ?>
-                	<span class="warning">Voer aub een bericht in</span>
+                	<span class="warning">Voer een bericht in</span>
                 <?php } ?>	
                 </label>
                 <textarea name="comments" id="comments"><?php
@@ -153,7 +153,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 	} ?></textarea>
             </p>
             <p>
-                <input name="send" type="submit" value="Send message">
+                <input name="send" type="submit" value="Versturen">
             </p>
         </form>
         <pre>
