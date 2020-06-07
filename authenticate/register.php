@@ -41,9 +41,7 @@ if (!isset($_SESSION['status'])) {
 <body>
 <h1>Als gebruiker registreren: naam en wachtwoord</h1>
 <?php
-	if (isset($success)) {
-		echo "<p>$success</p>";
-	} elseif (isset($errors) && !empty($errors)) {
+	if (isset($errors) && !empty($errors)) {
 		echo '<ul>';
 		foreach ($errors as $error) {
 			echo "<li>$error</li>";	

@@ -14,23 +14,21 @@ if (isset($_POST['registreer'])) {
 		$errors[] = 'Alleen alfanumerieke karakters, spaties, streepjes en onderstreepjes 
 						zijn toegestaan in gebruikersnaam.';
 	}
-}
-$redirect = 'https://ict4us.nl/authenticate/morris_login.php';
-if (!$errors) {
-	$lastUserId = $_SESSION['lastUserId'];
-	require '/private/morris/includes/update_user.php';
-	if($success) {
-		header("Location: $redirect");
-		unset($_SESSION['status']);
-		unset($_SESSION['lastUserId']);
-		unset($_SESSION['success']);
-		if (isset($_COOKIE[session_name()])) {
-			setcookie(session_name(), '', time()-86400, '/');
-		}
-		session_destroy();
-		ob_end_flush();
-	} else {
-		$errors[] = 'Er iets verkeerd gegaan met de logboeknaam, contact de beheerder';
+	$redirect = 'https://ict4us.nl/authenticate/morris_login.php';
+	if (!$errors) {
+		$lastUserId = $_SESSION['lastUserId'];
+		require '/private/morris/includes/update_user.php';
+		if($success) {
+			header("Location: $redirect");
+			unset($_SESSION['status']);
+			unset($_SESSION['lastUserId']);
+			unset($_SESSION['success']);
+			if (isset($_COOKIE[session_name()])) {
+				setcookie(session_name(), '', time()-86400, '/');
+			}
+			session_destroy();
+			ob_end_flush();
+		} 
 	}
 }
 
@@ -55,9 +53,7 @@ if (!$errors) {
 <body>
 <h1>Als gebruiker registreren</h1>
 <?php
-	if ($_SESSION['success']) {
-		echo '<p>' . $_SESSION['success'] . '</p>';
-	} elseif (isset($errors) && !empty($errors)) {
+	if (isset($errors) && !empty($errors)) {
 		echo '<ul>';
 		foreach ($errors as $error) {
 			echo "<li>$error</li>";	
