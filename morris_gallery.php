@@ -87,7 +87,7 @@
 							$firstRow = false;
 						?>
 							<td><a href="morris_gallery.php?image=<?= safe($row['filename_web']) ?>&amp;curPage=<?= $curPage ?>">
-								<img src="./images/images_thumb/<?= safe($row['filename_thumb']); ?>" alt="<?= safe($row['caption']); ?>" width="100" height="65">
+								<img src="./images/images_thumb/<?= safe($row['filename_thumb']); ?>" alt="<?= safe($row['caption']); ?>" width="100" height="80">
 							</a></td>	
 						<?php } while ($row = $result->fetch()); 
 							while ($pos++ % COLS) {

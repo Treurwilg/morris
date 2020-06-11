@@ -3,9 +3,13 @@
 	require_once '../../private/includes/connection.php';
 	require_once '../../private/includes/utility_funcs.php';
 	require_once '/private/morris/includes/morris_session_timeout.php';
-	// create database connection
+	$imageDir = './images/images_thumb/';
 	$conn = dbConnect('read', 'pdo');
-	$sql = 'SELECT * FROM morris_blog ORDER BY created DESC';
+	$sql = 'SELECT * 
+				FROM morris_blog 	
+				LEFT JOIN morris_images 
+				ON morris_blog.image_id = morris_images.image_id 
+				ORDER BY morris_blog.created DESC ';
 	$result = $conn->query($sql);
 	$errorInfo = $conn->errorInfo();
 	if (isset($errorInfo[2])) {
@@ -31,13 +35,26 @@
        }	else {
        	while ($row = $result->fetch())	{
        		$articleHeading = $row['created'] . ' ' . $row['title'] . ' ' . ' (' . $row['writer'] . ')';
-				echo "<h2>$articleHeading</h2>";
 				// echo "<h2>{$row['created']}</h2>";
 				$extract = getFirst($row['article'], 2);
-				echo '<p>' . safe($extract[0]);
+				echo '<p>';
+				if (!empty($row['filename_thumb'])) {
+					$image = $imageDir . basename($row['filename_thumb']);	
+					if (file_exists($image) && is_readable($image)) {
+						$imageSize = getimagesize($image)[3];	
+						if (!empty($imageSize)) { ?>
+							<figure class="blog_thumb">
+								<img src="<?= $image ?>" alt="<?= safe($row['caption']) ?>" <?= $imageSize ?>>
+							</figure>
+						<?php }				
+					}			
+				} 
+				echo "<h3>$articleHeading</h3>";
+				echo safe($extract[0]);
 				if ($extract[1]) {
 					echo '<a href="https://ict4us.nl/morris/morris_details.php?article_id=' . $row['article_id'] . '">Meer</a>';				
 				}
+				echo '<p>---</p>';
 				echo '</p>';    	
        	}
        }
@@ -45,6 +62,5 @@
       <?php include '/private/morris/includes/morris_logout.php'; ?>
     </main>
     <?php include '../../private/morris/includes/footer.php'; ?>
-</div>
 </body>
 </html>
