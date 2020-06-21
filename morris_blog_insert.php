@@ -27,7 +27,6 @@
 				$stmt->execute();
 				// use rowCount to get the number of affected rows
 				$imageOK = $stmt->rowCount();
-				
 			}
 			// get the image's primary key or find out what went wrong
 			if ($imageOK) {
@@ -117,6 +116,7 @@
 <meta charset="utf-8">
 <title>Aanvullen</title>
 <link href="./styles/morris.css" rel="stylesheet" type="text/css">
+<script src="https://cdn.ckeditor.com/ckeditor5/16.0.0/classic/ckeditor.js"></script>
 </head>
 <body>
 <header>
@@ -162,28 +162,6 @@
 					<?php } ?>
 				</select>		
 			</p>
-			<p>
-				<label for="image_id">Al ge-uploade foto:</label>
-				<select name="image_id" id="image_id">
-					<option value="">Kies foto</option>
-					<?php
-					// get the list of images
-					$getImages = 'SELECT image_id, filename_web FROM morris_images ORDER BY filename_web';
-					$images = $conn->query($getImages);
-					while ($row = $images->fetch()) { ?>
-						<option value="<?= $row['image_id'] ?>"
-							<?php
-							if (isset($_POST['image_id']) && $row['image_id'] == $_POST['image_id']) {
-								echo 'selected';							
-							}						
-							?>><?= safe($row['filename_web']) ?></option>
-					<?php } ?>		
-				</select>			
-			</p>
-			<p id="allowUpload">
-				<input type="checkbox" name="upload_new" id="upload_new">
-				<label for="upload_new">Of upload nieuwe foto</label>			
-			</p>
 			<p class="optional">
 				<label for="image">Kies foto:</label>
 				<input type="file" name="image" id="image">			
@@ -200,6 +178,12 @@
 	</main>
 	<?php include '/private/morris/includes/footer.php'; ?>
 </div>
-<script src="js/toggle_fields.js"></script>
+<script>
+    ClassicEditor
+        .create( document.querySelector( '#article' ) )
+        .catch( error => {
+            console.error( error );
+        } );
+</script>
 </body>
 </html>

@@ -52,7 +52,10 @@
 	        <figure>
 	            <img src="<?= $image ?>" alt="<?= safe($row['caption']) ?>" <?= $imageSize ?>>
 	        </figure>
-        <?php } if ($row) { echo convertToParas($row['article']); }?>
+        <?php } 
+        $toegelatenTags = '<p><i><strong><a><h1><h2><h3><h4><li><ul><ol><figure><tbody><table><blockquote><tr><td>';
+        if ($row) { echo strip_tags($row['article'], $toegelatenTags) /** convertToParas($row['article'])*/ ; 
+        }?>
         <p><a href="
 			<?php
 			// check that browser supports $_SERVER variables

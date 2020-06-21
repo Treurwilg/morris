@@ -50,7 +50,8 @@
 					}			
 				} 
 				echo "<h3>$articleHeading</h3>";
-				echo safe($extract[0]);
+				$toegelatenTags = '<p><i><strong><a><h1><h2><h3><h4><li><ul><ol><figure><tbody><table><blockquote><tr><td>';
+				echo  strip_tags($extract[0], $toegelatenTags); // safe($extract[0]);
 				if ($extract[1]) {
 					echo '<a href="https://ict4us.nl/morris/morris_details.php?article_id=' . $row['article_id'] . '">Meer</a>';				
 				}
