@@ -78,7 +78,7 @@
 			$article_id = $conn->lastInsertId();
 			foreach ($_POST['category'] as $cat_id) {
 				if (is_numeric($cat_id)) {
-					$values[] = "(article_id, " . (int) $cat_id . ')';				
+					$values[] = "($article_id, " . (int) $cat_id . ')';				
 				}			
 			}	
 			if ($values) {
