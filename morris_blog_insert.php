@@ -11,7 +11,7 @@
 		// initialize flag
 		$OK = false;
 		// if a file has been uploaded, process it
-		if (isset($_POST['upload_new']) && $_FILES['image']['error'] == 0) {
+		if ($_FILES['image']['error'] == 0) {
 			$imageOK = false;
 			require_once '../PhpClasses/File/Upload.php';
 			$loader = new Upload('images/'); // hier werd eerst nog een niveau hoger gegaan
@@ -46,10 +46,7 @@
 			} else {
 				$imageError = implode(' ' , $loader->getMessages());
 			}
-		} elseif (isset($_POST['image_id']) && !empty($_POST['image_id'])) {
-			// get the primary key of a previously uploaded image
-			$image_id = $_POST['image_id'];	
-		}
+		} 
 		// insert blog details only if there hasn't been an image upload error
 		if (!isset($imageError)) {
 			// create SQL
@@ -60,11 +57,11 @@
 			// bind the parameters
 			// if $image_id exists, use it
 			if (isset($image_id)){
-				$stmt->bindParam(':image_id', $image_id, PDO::PARAM_INT);		
+				$stmt->bindParam(':image_id', $image_id, PDO::PARAM_INT);			
 			} else {
 				// set image_id to NULL
 				$stmt->bindValue(':image_id', NULL, PDO::PARAM_NULL);			
-			}
+			}	
 			$stmt->bindParam(':title', $_POST['title'], PDO::PARAM_STR);
 			$stmt->bindParam(':article', $_POST['article'], PDO::PARAM_STR);
 			$stmt->bindParam(':writer', $_SESSION['blogname'], PDO::PARAM_STR);
