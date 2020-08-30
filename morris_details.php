@@ -3,7 +3,7 @@
 	$imageDir = './images/images_web/';
 	require_once '../../private/includes/utility_funcs.php';
 	require_once '../../private/includes/connection.php';
-	require_once '/private/morris/includes/morris_session_timeout.php';
+	// require_once '/private/morris/includes/morris_session_timeout.php';
 	// connect to the database
 	$conn = dbConnect('read', 'pdo');
 	// check for article_id in query string
@@ -70,7 +70,7 @@
 				// otherwise, send to main page
 				echo 'morris_blog.php';			
 			} ?>">Terug naar het logboek</a></p>
-			<?php include '/private/morris/includes/morris_logout.php'; ?>
+			// <?php include '/private/morris/includes/morris_logout.php'; ?>
     </main>
     <?php include '../../private/morris/includes/footer.php'; ?>
 </div>

@@ -2,7 +2,7 @@
 	include '../../private/morris/includes/title.php'; 
 	require_once '../../private/includes/connection.php';
 	require_once '../../private/includes/utility_funcs.php';
-	require_once '/private/morris/includes/morris_session_timeout.php';
+	// require_once '/private/morris/includes/morris_session_timeout.php';
 	$imageDir = './images/images_thumb/';
 	$conn = dbConnect('read', 'pdo');
 	$sql = 'SELECT * 
@@ -60,7 +60,7 @@
        	}
        }
       ?>
-      <?php include '/private/morris/includes/morris_logout.php'; ?>
+       // <?php include '/private/morris/includes/morris_logout.php'; ?> 
     </main>
     <?php include '../../private/morris/includes/footer.php'; ?>
 </body>
